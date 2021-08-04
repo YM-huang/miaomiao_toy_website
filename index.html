@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>miaomiao_toy_index</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Jancgk/Background@master/favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/myblog.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fade.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Jancgk/Background@master/js/hideseek.min.js"></script>
+</head>
+<body class="home blog logged-in" ondragstart="return false">
+<section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span class="li_img1"></span></li>
+        <li><span class="li_img2"></span></li>
+        <li><span class="li_img3"></span></li>
+        <li><span class="li_img4"></span></li>
+        <li><span class="li_img5"></span></li>
+        <li><span class="li_img6"></span></li>
+    </ul>
+</section>
+<!--音樂盒-->
+<div id="zan-bodyer">
+    <div class="container">
+        <div class="row">
+            <div class="player_show">
+                <div class="play">
+                    <div id="aplayer">
+                        <script>
+                            $(function () {
+                                $.ajax({
+                                    url: 'https://api.i-meto.com/meting/api?server=netease&type=playlist&id=879840820',
+                                    success: function (list) {
+                                        var ap = new APlayer({
+                                            container: document.getElementById('aplayer'),
+                                            mini: false,
+                                            mutex: true,
+                                            listMaxHeight: '280px',
+                                            lrcType: 3,
+                                            theme: '#ff69b4',
+                                            order: 'random',
+                                            listFolded: true,
+                                            audio: list
+                                        })
+                                    }
+                                })
+                            })
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="zan-footer">
+    <div class="row">
+        <div class="zan-footer-col-md-2"><a href="productlist.html" target="_blank"><i
+                class="fa fa-angle-double-left fa-lg"></i>514<span class="hidden-xs">(NPage)</span></a></div>
+        <div class="zan-footer-col-md-6">
+            <div class="search">
+                <input id="search-highlight" name="search-highlight" placeholder="Game Filter" type="text"
+                       data-list=".highlight_list" autocomplete="off">
+                <ul id="search-item" class="vertical highlight_list"></ul>
+            </div>
+        </div>
+        <div class="zan-footer-col-md-2"><a href="productlist.html"
+                                            target="_blank">114<span class="hidden-xs">(OPage)</span><i
+                class="fa fa-angle-double-right fa-lg"></i></a></div>
+    </div>
+    <div class="footer-site">
+        <a href="#" target="_blank"><i class="fa fa-home"></i><span class="hidden-xs"> MyGarageKits Login | </span></a>
+        <a href="#" target="_blank"><i class="fa fa-link"></i><span
+                class="hidden-xs"> MyGarageKits backup | </span></a>
+        <a href="#" target="_blank"><i class="fa fa-dollar"></i><span
+                class="hidden-xs"> Donate MyGarageKits &copy;</span></a>
+    </div>
+    <div class="footer-page-link col-md-2 pull-left">
+        <div class="zan-page clearfix">
+            <ul class="pagination pagination-zan">
+                <li><a href="productlist.html" target="_blank"
+                       class="hidden-xs">####</a></li>
+                <li><a href="productlist.html" target="_blank"
+                       class="hidden-xs">MyGarageKits List</a></li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">N1</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">N2</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">N3</a>
+                </li>
+                <li><a href="#" target="_blank" class="hidden-xs">...</a></li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">N19</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-page-link col-md-2">
+        <div class="zan-page clearfix">
+            <ul class="pagination pagination-zan">
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">1</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">2</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">3</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">4</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">5</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">6</a>
+                </li>
+                <li><span class="hidden-xs">...</span></li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">72</a>
+                </li>
+                <li><a href="productlist.html" target="_blank" class="hidden-xs">»</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="js/Kits.min.js"></script>
+<script type="text/javascript" src="js/fade.js"></script>
+<script>console.log('%c       ', 'font-size: 150px;');
+$(document).ready(function () {
+    $('body').GalMenu({'menu': 'KitDropDown'});
+    var resource_list = "./kitslist.json";
+    $.getJSON(resource_list, function (data, status) {
+        if (status) {
+            for (let i = 0; i < data.length; i++) {
+                $("#search-item").append("<li><a href='" + data[i].git_url + "'target=\"_blank\">" + data[i].title + "</a></li>")
+            }
+        } else {
+            console.log("400: Invalid request" + status)
+        }
+    });
+    $('#search-highlight').hideseek({highlight: true});
+    setTimeout(function () {
+        $(".aplayer-list").addClass("aplayer-list-hide").children().css("text-align", "left")
+    }, 3000);
+    $('.hero__scroll').on('click', function (e) {
+        $('html, body').animate({scrollTop: $(window).height()}, 1200)
+    })
+});</script>
+
+
+
+
+
+
+
+
+
